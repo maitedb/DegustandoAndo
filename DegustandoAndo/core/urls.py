@@ -5,7 +5,7 @@ from core.views import inicio, agregar, editar, eliminar, mostrar
 urlpatterns = [
     path('', inicio, name='index'),
     path('agregar/', agregar, name='agregar'),
-    path('editar/', editar, name='editar'),
-    path('eliminar/', eliminar, name='eliminar'),
-    path('mostar/', mostrar, name='mostrar'),
+    path('editar//<int:id_articulo>/', editar, name='editar'),
+    path('eliminar/<int:id_articulo>/',eliminar, name='eliminar'),
+    path('mostrar/', mostrar, name='mostrar'),
 ]
