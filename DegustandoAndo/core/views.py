@@ -53,3 +53,4 @@ def eliminar(request, id_articulo):
 
     return render(request, 'core/eliminar_articulo.html', {"articulo_eliminado" : name})
 
+

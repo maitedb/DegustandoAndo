@@ -34,17 +34,32 @@
             </a>
           </li>
           <li>
-            <a href="{% url 'agregar'%}" class="page-scroll">
-              <span class="menu-title">CREAR MI ARTICULO</span>
+            <a href="{% url 'mostrar'%}" class="page-scroll">
+              <span class="menu-title">ARTICULOS</span>
               <span class="dot"></span>
             </a>
           </li>
           <li>
-            <a href="{% url 'mostrar'%}" class="page-scroll">
-              <span class="menu-title">MOSTRAR ARTICULOS</span>
+            <a href="{% url 'agregar'%}" class="page-scroll">
+              <span class="menu-title">AGREGAR MI ARTICULO</span>
               <span class="dot"></span>
             </a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li>
+            <a href="{% url 'exit'%}"class="page-scroll">
+              <span class="menu-title"> CERRAR SESION</span>
+              <span class="dot"></span>
+            </a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'login'%}" class="page-scroll">
+              <span class="menu-title">INGRESAR</span>
+              <span class="dot"></span>
+            </a>
+          </li>
+          {%endif%}
         </ul>
       </nav>
       <div class="container-fluid">
