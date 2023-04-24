@@ -6,6 +6,7 @@ class Articulos(models.Model):
     subtitulo = models.CharField(max_length=140, default="")
     ubicacion = models.CharField(max_length=100)
     cuerpo = models.TextField(default="")
+    imagen = models.ImageField(upload_to="media/articulos", null=True, blank = True, default=None)
     autor = models.CharField(max_length=100, default="")
     fecha = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 

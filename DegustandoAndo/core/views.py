@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404 
 from core.models import Articulos
 from core.forms import ArticulosForm
 # Create your views here.
@@ -14,7 +14,7 @@ def agregar(request):
             data = articulo_form.cleaned_data
             articulo = Articulos(titulo=data["titulo"],subtitulo=data["subtitulo"], ubicacion=data["ubicacion"], cuerpo =data["cuerpo"], autor=data["autor"],fecha=data["fecha"])
             articulo.save()
-            return render(request, 'core/index.html')
+            return render(request, 'core/mostrar_articulo.html')
         
     articulo_form = ArticulosForm()
     return render(request, 'core/agregar_articulo.html', {"form": articulo_form})
@@ -37,12 +37,13 @@ def editar(request, id_articulo):
                 articulo.subtitulo= data["subtitulo"]
                 articulo.ubicacion= data["ubicacion"]
                 articulo.cuerpo= data["cuerpo"]
+                articulo.imagen = data ['imagen']
                 articulo.fecha= data["fecha"]
                 articulo.save()
-                return render(request, 'core/index.html')
+                return render(request, 'core/mostrar_articulo.html')
     else: 
-        articulo_form = ArticulosForm(initial= {'titulo' : articulo.titulo, 'subtitulo' : articulo.subtitulo, 'ubicacion': articulo.ubicacion, 'cuerpo' : articulo.cuerpo, 'autor' : articulo.autor, 'fecha' : articulo.fecha})
-        return render(request, 'core/editar_articulo.html', {'form' : articulo_form })
+        articulo_form = ArticulosForm(initial= {'titulo' : articulo.titulo, 'subtitulo' : articulo.subtitulo, 'ubicacion': articulo.ubicacion, 'cuerpo' : articulo.cuerpo,'imagen' : articulo.imagen, 'autor' : articulo.autor, 'fecha' : articulo.fecha})
+        return render(request, 'core/editar_articulo.html', {'form' : articulo_form },)
 
 def eliminar(request, id_articulo):
 
@@ -52,5 +53,13 @@ def eliminar(request, id_articulo):
 
 
     return render(request, 'core/eliminar_articulo.html', {"articulo_eliminado" : name})
+
+def mostrar_miinfo(request):
+    return render(request, 'core/miinfo.html')
+
+def leermas(request, id_articulo):
+    articulo = get_object_or_404(Articulos, id=id_articulo)
+    return render(request, 'core/leermas.html', {'articulo': articulo})
+
 
 

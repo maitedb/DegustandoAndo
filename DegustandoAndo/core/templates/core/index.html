@@ -1,6 +1,8 @@
 {%extends 'core/base.html'%}
+{%load static%}
 {%block contenido_central%}
-<h3>Inicio</h3>
+
+
 {% if request.user.is_authenticated %}
     <hr>
     <h4>
