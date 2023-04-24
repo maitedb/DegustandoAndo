@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from core.views import inicio, editar, eliminar, mostrar_miinfo, leermas
+from core.views import inicio, editar, eliminar, mostrar_miinfo, leermas,perfiles 
 from user.views import * 
 
 urlpatterns = [
@@ -13,5 +13,6 @@ urlpatterns = [
     path('register/', register, name= 'register'),
     path('sobremi/', mostrar_miinfo , name= 'sobremi' ),
     path('leermas/<int:id_articulo>/', leermas, name='leermas'),
+    path('perfiles/', perfiles, name='perfiles')
 
 ]

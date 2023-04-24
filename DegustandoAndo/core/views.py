@@ -61,5 +61,6 @@ def leermas(request, id_articulo):
     articulo = get_object_or_404(Articulos, id=id_articulo)
     return render(request, 'core/leermas.html', {'articulo': articulo})
 
-
+def perfiles(request):
+    return render(request, 'core/perfiles.html')
 
