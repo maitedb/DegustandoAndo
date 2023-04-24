@@ -49,10 +49,17 @@
           {% if request.user.is_authenticated %}
           <li>
             <a href="{% url 'exit'%}"class="page-scroll">
+              <span class="menu-title"> MI PERFIL</span>
+              <span class="dot"></span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'exit'%}"class="page-scroll">
               <span class="menu-title"> CERRAR SESION</span>
               <span class="dot"></span>
             </a>
           </li>
+
           {% else %}
           <li>
             <a href="{% url 'login'%}" class="page-scroll">
